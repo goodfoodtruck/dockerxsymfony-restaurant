@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Liste
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h2>Liste des restaurants</h2>
+		<div class="list">
+
+
+			{% for restaurant in restaurants %}
+				<ul class="">
+					<li>{{ restaurant.name }}</li>
+					<li>{{ restaurant.address }}</li>
+					<li>{{ restaurant.phone }}</li>
+					<li>
+						<a class="btn more" href={{ path('restaurant_index', {'id': restaurant.id } ) }}>Voir plus</a>
+					</li>
+				</ul>
+			{% else %}
+				<h1>Il n'y a pas encore de restaurants</h1>
+			{% endfor %}
+
+		</div>
+	</div>
+
+{% endblock %}

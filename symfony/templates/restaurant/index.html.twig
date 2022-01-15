@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes restaurants
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<a class="btn" href="{{ path('restaurant_new') }}">Créer un nouveau</a>
+
+		<h2>Mes restaurants</h2>
+		<div class="list">
+
+
+			{% for restaurant in restaurants %}
+				<ul class="">
+					<li>{{ restaurant.name }}</li>
+					<li>{{ restaurant.address }}</li>
+					<li>{{ restaurant.phone }}</li>
+					<li>
+						<a class="btn" href="{{ path('restaurant_show', {'id': restaurant.id}) }}">Produits</a>
+					</li>
+					<li>
+						<a class="btn" href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">Éditer</a>
+					</li>
+				</ul>
+			{% endfor %}
+
+		</div>
+	</div>
+{% endblock %}

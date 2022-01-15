@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mes commandes
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h2>Mes commandes</h2>
+		<div class="list">
+			{% for purchase_order in purchase_orders %}
+				<ul>
+					<li>{{ purchase_order.restaurant.name }}</li>
+					{% for orderLine in purchase_order.purchaseOrderLines %}
+						<li>{{ orderLine.product.name }}</li>
+						<li>x
+							{{ orderLine.quantity }}</li>
+					{% endfor %}
+					<li>Total :
+						{{purchase_order.totalPrice}}
+						€</li>
+				</ul>
+			{% else %}
+				<h4>Pas de commande</h4>
+
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

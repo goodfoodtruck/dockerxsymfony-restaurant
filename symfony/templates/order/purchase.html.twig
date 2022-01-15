@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	Commander
+{% endblock %}
+
+{% block body %}
+
+	<div class="container login">
+		<a class="btn" href={{ path('purchase_order')}}>Mes commandes</a>
+		<h2>Preparez votre commande</h2>
+		<div class="list">
+			{{ form_start(form) }}
+			<div id="produits" data-prototype="{{ form_row(form.purchaseOrderLines.vars.prototype)|e('html_attr') }}">
+				{{ form_row(form.purchaseOrderLines) }}
+				<span></span>
+			</div>
+			<button class="btn active" type="submit">Commander</button>
+			{{ form_end(form) }}
+
+
+		</div>
+	</div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+	<script>
+		let collection,
+boutonAjout,
+span;
+window.onload = () => {
+collection = document.querySelector("#produits");
+span = collection.querySelector("span");
+boutonAjout = document.createElement("button");
+boutonAjout.className = "ajout-produit btn active";
+boutonAjout.innerText = "Ajouter un produit";
+let nouveauBouton = span.append(boutonAjout);
+collection.dataset.index = collection.querySelectorAll("input").length;
+boutonAjout.addEventListener("click", function () {
+addButton(collection, nouveauBouton);
+});
+}
+function addButton(collection, nouveauBouton) {
+let prototype = collection.dataset.prototype;
+let index = collection.dataset.index;
+prototype = prototype.replace(/__name__/g, index);
+let content = document.createElement("html");
+content.innerHTML = prototype;
+let newForm = content.querySelector("div");
+let boutonSuppr = document.createElement("button");
+boutonSuppr.type = "button";
+boutonSuppr.className = "btn active";
+boutonSuppr.innerText = "Supprimer ce produit";
+newForm.append(boutonSuppr);
+collection.dataset.index ++;
+let boutonAjout = collection.querySelector(".ajout-produit");
+span.insertBefore(newForm, boutonAjout);
+boutonSuppr.addEventListener("click", function () {
+this.previousElementSibling.parentElement.remove();
+})
+}
+	</script>
+{% endblock %}

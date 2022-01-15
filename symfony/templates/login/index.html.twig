@@ -1,0 +1,31 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Connexion
+{% endblock %}
+
+{% block body %}
+	{% if error %}
+		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+	{% endif %}
+
+
+	<div class="container login">
+		<h2>Se connecter</h2>
+		<div class="list">
+			<form action="{{ path('login') }}" method="post">
+				<input type="text" id="username" placeholder="Email" name="_username" value="{{ last_username }}"/>
+				<br>
+				<input type="password" id="password" placeholder="Mot de passe" name="_password"/>
+				<br>
+				<button class="btn active" type="submit">Se connecter</button>
+			</form>
+		</div>
+		<div class="note">
+			<label>Vous n'avez pas de compte ?
+				<a class="btn" href="/registration">Enregistrez-vous</a>
+			</label>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ restaurant.name }}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{% if is_granted("ROLE_ADMIN") and app.user.email is same as(restaurant.owner[0].email) %}
+			<a class="btn" href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">Modifier</a>
+		{% endif %}
+		<a class="btn" href="/">Retour</a>
+		<h1>Au menu chez
+			{{ restaurant.name }}</h1>
+		<div class="list">
+			{% for product in restaurant.products %}
+				<ul>
+					<li>{{ product.name }}</li>
+					<li>{{ product.price }}
+						€
+					</li>
+					<li>{{ product.description }}</li>
+					<li>
+						<a class="btn" href={{ path('make_purchase_order', {'id': restaurant.id } ) }}>Commander</a>
+					</li>
+				</ul>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

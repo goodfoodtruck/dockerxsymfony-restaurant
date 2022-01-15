@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<a class="btn" href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">Retour</a>
+		{{ include('restaurant/_delete_product_form.html.twig') }}
+
+		<h1>Modifier produit</h1>
+		<div class="list">
+			{{ include('restaurant/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+
+		</div>
+	</div>
+{% endblock %}

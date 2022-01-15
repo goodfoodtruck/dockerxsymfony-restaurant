@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau restaurant
+{% endblock %}
+
+{% block body %}
+	<div class="container login">
+		<a class="btn" href="{{ path('owner_restaurant_index') }}">Retour</a>
+		<h2>Créer un nouveau restaurant</h2>
+		<div class="list">
+			{{ include('restaurant/_form.html.twig') }}
+		</div>
+
+	</div>
+
+
+{% endblock %}

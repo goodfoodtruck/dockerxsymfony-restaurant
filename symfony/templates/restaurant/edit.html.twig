@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{restaurant.name }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<a class="btn" href="{{ path('owner_restaurant_index') }}">Retour</a>
+
+		<h1>Éditer
+			{{ restaurant.name }}</h1>
+
+		<div class="list">
+			{{ include('restaurant/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+			{{ include('restaurant/_delete_form.html.twig') }}
+		</div>
+
+		<h2>Produits</h2>
+		<div class="list">
+			<a class="btn active" href={{ path('restaurant_add_product', {'id': restaurant.id} )}}>
+				Ajouter des produits</a>
+			{% for product in products %}
+				<ul>
+					<li>{{ product.name }}</li>
+					<li>{{ product.price }}
+						€</li>
+					<li>
+						<a class="btn" href={{ path('product_edit', {'id': product.id} ) }}>Éditer</a>
+					</li>
+					<li>{{ include('restaurant/_delete_product_form.html.twig') }}</li>
+				</ul>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

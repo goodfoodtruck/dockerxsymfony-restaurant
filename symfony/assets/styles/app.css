@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+li {
+    list-style-type: none;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+
+    font-size: 1em;
+}
+
+nav ul {
+    display: flex;
+    margin-right: 0;
+    position: absolute;
+    right: 0;
+}
+
+nav ul li {
+    margin: 1.3em;
+}
+
+.btn {
+    color: white;
+    padding: 0.8em;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background-color: #0579ff;
+    text-decoration: none;
+    box-shadow: 0px 5px 0px #0466d4;
+}
+.btn:hover {
+    background-color: #066bdf;
+}
+
+.active {
+    margin-top: 1em;
+    font-weight: bold;
+    font-size: 0.7em;
+    color: black;
+    background-color: white;
+    box-shadow: 0px 5px 0px #e4e4e4;
+}
+
+.active:hover {
+    background-color: #f2f2f2;
+}
+
+.container {
+    margin: 8em;
+
+    font-size: 1.35em;
+}
+
+.login {
+    margin: 8em 20em;
+}
+
+.container form {
+    color: white;
+    margin: auto;
+    text-align: center;
+}
+
+.container input {
+    padding: 15px;
+    margin: 10px;
+    border: none;
+    border-radius: 15px;
+    width: 90%;
+}
+
+.list {
+    border-width: 1.8em;
+    border-style: solid;
+    border-color: #0579ff;
+    border-radius: 12px;
+    background-color: #0579ff;
+}
+
+.list ul {
+    display: flex;
+    box-shadow: 0px 5px 0px #e4e4e4;
+    border-radius: 30px;
+    margin: 2em;
+    background-color: white;
+}
+
+.list li {
+    margin: 1.6em 0.6em;
+}
+
+select {
+    font-size: 0.8em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 10px;
+}
+
+textarea {
+    border: none;
+    border-radius: 11px;
+}
+
+.note {
+    margin: 1em;
+}
+
+.note .btn {
+    padding: 0.5em !important;
+}
+
+.contents {
+    position: absolute;
+    margin: -1em 0px !important;
+}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ restaurant.name }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<h2>{{ restaurant.name }}</h2>
+		<a class="btn" href="{{ path('owner_restaurant_index') }}">Retour</a>
+		<a class="btn" href="{{ path('restaurant_edit', {'id': restaurant.id}) }}">Éditer</a>
+
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><br></td>
+				</tr>
+				<tr>
+					<th>Adresse du restaurant :
+					</th>
+					<td>{{ restaurant.address }}</td>
+				</tr>
+				<tr>
+					<th>Numéro de téléphone :
+					</th>
+					<td>{{ restaurant.phone }}</td>
+				</tr>
+			</tbody>
+			{{ include('restaurant/_delete_form.html.twig') }}
+		</table>
+		<h2>Produits</h2>
+		<div class="list">
+			{% for product in products %}
+				<ul>
+					<li>{{ product.name }}</li>
+					<li>{{ product.price }}
+						€</li>
+				</ul>
+			{% endfor %}
+		</div>
+
+
+		<h2>Commandes</h2>
+		<div class="list">
+			{% for order in orders %}
+				<ul>
+
+					{% for orderLine in order.purchaseOrderLines %}
+						<li>{{ orderLine.product.name }}</li>
+						<li>x
+							{{ orderLine.quantity }}</li>
+						<li>{{ orderLine.product.price }}
+							€</li>
+					{% endfor %}
+					<li>Total :
+						{{ order.totalPrice }}
+						€</li>
+					<li>{{ order.user.firstName}}</li>
+				</ul>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
